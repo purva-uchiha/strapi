@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tutorings",
+  "info": {
+    "singularName": "tutoring",
+    "pluralName": "tutorings",
+    "displayName": "Tutoring",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Trained_Teacher": {
+      "type": "boolean"
+    },
+    "Grade": {
+      "type": "string"
+    },
+    "Subject_Pricing": {
+      "type": "string"
+    },
+    "Location": {
+      "type": "customField",
+      "options": [
+        "Online",
+        "Offline",
+        ""
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "Calendar_Management": {
+      "type": "json"
+    },
+    "serviceprovider": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service-provider.service-provider",
+      "inversedBy": "tutoring"
+    }
+  }
+}

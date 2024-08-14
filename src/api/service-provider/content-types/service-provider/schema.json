@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_providers",
+  "info": {
+    "singularName": "service-provider",
+    "pluralName": "service-providers",
+    "displayName": "ServiceProvider",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ProviderName": {
+      "type": "string",
+      "required": true
+    },
+    "Address": {
+      "type": "text"
+    },
+    "Email": {
+      "type": "email",
+      "required": true
+    },
+    "Bank_Information": {
+      "type": "text"
+    },
+    "Background_Check": {
+      "type": "boolean"
+    },
+    "Intro": {
+      "type": "text"
+    },
+    "Phone": {
+      "type": "customField",
+      "customField": "plugin::strapi-phone-validator.phone"
+    },
+    "services": {
+      "type": "customField",
+      "options": [
+        "Cleaning",
+        "Cooking",
+        "Laundry",
+        "Tutoring",
+        "Baby Sitting",
+        "Elderly Care",
+        "Handyman",
+        "Beauty",
+        ""
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "cooking": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::cooking.cooking",
+      "mappedBy": "serviceprovider"
+    },
+    "tutoring": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tutoring.tutoring",
+      "mappedBy": "serviceprovider"
+    }
+  }
+}

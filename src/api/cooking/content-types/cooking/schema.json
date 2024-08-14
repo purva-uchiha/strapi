@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cookings",
+  "info": {
+    "singularName": "cooking",
+    "pluralName": "cookings",
+    "displayName": "Cooking",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Trained_Chef": {
+      "type": "boolean"
+    },
+    "Cuisines": {
+      "type": "text"
+    },
+    "Menu": {
+      "type": "text"
+    },
+    "Calendar_Management": {
+      "type": "json"
+    },
+    "Diet": {
+      "type": "customField",
+      "options": [
+        "Veg",
+        "Nonveg",
+        ""
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "Delivery": {
+      "type": "string"
+    },
+    "Delivery_Charges": {
+      "type": "string"
+    },
+    "approve": {
+      "type": "boolean",
+      "default": false
+    },
+    "Location": {
+      "type": "customField",
+      "options": [
+        "Remote",
+        "Onsite"
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "serviceprovider": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service-provider.service-provider",
+      "inversedBy": "cooking"
+    }
+  }
+}
