@@ -11,6 +11,7 @@
     "deploy": "strapi deploy"
   },
   "dependencies": {
+    "@elastic/elasticsearch": "^8.15.0",
     "@strapi/plugin-cloud": "4.25.7",
     "@strapi/plugin-i18n": "4.25.7",
     "@strapi/plugin-users-permissions": "4.25.7",

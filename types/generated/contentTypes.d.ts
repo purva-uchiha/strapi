@@ -876,6 +876,43 @@ export interface ApiCookingCooking extends Schema.CollectionType {
   };
 }
 
+export interface ApiSearchIndexingRequestSearchIndexingRequest
+  extends Schema.CollectionType {
+  collectionName: 'search_indexing_requests';
+  info: {
+    singularName: 'search-indexing-request';
+    pluralName: 'search-indexing-requests';
+    displayName: 'Search-indexing-request';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    item_id: Attribute.BigInteger;
+    collection_name: Attribute.String;
+    indexing_status: Attribute.Enumeration<['To be Done', 'Done', 'Not done']>;
+    indexing_request_type: Attribute.Enumeration<
+      ['Add to index', 'Delete from index']
+    >;
+    full_site_indexing: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::search-indexing-request.search-indexing-request',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::search-indexing-request.search-indexing-request',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiServiceProviderServiceProvider
   extends Schema.CollectionType {
   collectionName: 'service_providers';
@@ -1004,6 +1041,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::admin.admin': ApiAdminAdmin;
       'api::cooking.cooking': ApiCookingCooking;
+      'api::search-indexing-request.search-indexing-request': ApiSearchIndexingRequestSearchIndexingRequest;
       'api::service-provider.service-provider': ApiServiceProviderServiceProvider;
       'api::tutoring.tutoring': ApiTutoringTutoring;
     }
